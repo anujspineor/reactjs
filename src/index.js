@@ -11,20 +11,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
 class ToDoList extends React.Component{
-  sayToHello(){
-    alert("Hello Paji !");
-  }
+  
 	constructor(){
 		super();
 	
 	this.state ={
-		linknames:['Home','About Us','Contact Us']
+		linknames:['Home','Sign In','Sign Up']
 	 } 
-   this.onchangeHandler=this.onchangeHandler.bind(this);
-   this.onsubmit=this.onsubmit.bind(this);
 
 	}
-  onchangeLinkName(){
+/*  onchangeLinkName(){
      this.setState({
       linknames:['abc', 'abc2', 'abc3']
      });
@@ -45,22 +41,14 @@ class ToDoList extends React.Component{
       var name=event.target.name;
       a.push(event.target.value)
       this.setState({[name]:a});
-    }
+    }*/
 	render(){
 
 		return (
 			<div className="main">
 			<div className="container">
-              <Header menu={this.state.linknames} linkupdate= {this.onchangeLinkName.bind(this)}/>
-              <input type="text" name="inputas"  
-          onChange={(event) => this.onchangeHandler(event)} />
-          <button type="button" onClick={(event =>this.onsubmit(event))}>Add </button>
-              <Home/>
-              <Event age={20} linkupdate= {this.onchangeLinkName.bind(this)}/>
-              <StateLess/>
-              <ParentComponent hello={this.sayToHello}/>
-              <ComponentLifeCycle/>
-              <AddData/>
+              <Header menu={this.state.linknames}/>
+         
               </div>
             </div>
 			)
