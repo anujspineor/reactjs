@@ -1,14 +1,13 @@
 import React from 'react';
-import ReactDom from 'react-dom'
-import {Header} from "./app/components/Header"
-import {Home} from "./app/components/Home"
-import {Event} from "./app/components/event"
-import {StateLess} from "./app/components/StateLessComponent"
-import {ParentComponent} from "./app/components/ComunicateparentChild"
-import {ComponentLifeCycle} from "./app/components/ComponentLifeCycle"
-import {AddData} from "./app/components/addata"
+import ReactDom from 'react-dom';
+import {Header} from "./app/components/Header";
+import {Home} from "./app/components/Home";
+import {Slider} from "./app/components/Slider";
+import {Event} from "./app/components/event";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
+import './css/style.css';
+import './css/style1.css';
 
 class ToDoList extends React.Component{
   
@@ -27,15 +26,15 @@ class ToDoList extends React.Component{
   }
 
     onsubmit(event){
-   var b=this.state.linknames.map((a)=>a)
+    var b=this.state.linknames.map((a)=>a)
       b.push(this.state.inputas);
       
       this.setState({
       linknames:b
      });
-     //this.setState({linknames:a});
+     this.setState({linknames:a});
 
-    } 
+     } 
     onchangeHandler(event){
       var a=[];
       var name=event.target.name;
@@ -47,12 +46,15 @@ class ToDoList extends React.Component{
 		return (
 			<div className="main">
 			<div className="container">
-              <Header menu={this.state.linknames}/>
-         
-              </div>
-            </div>
+         <Header menu={this.state.linknames}/>
+      </div>
+      <Slider/>         
+      <div className="container">   
+         <Home/>
+      </div>
+    <Event/>
+    </div>
 			)
 	}
 }
-
 ReactDom.render(<ToDoList />, document.getElementById('root'));

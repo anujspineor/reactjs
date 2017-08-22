@@ -1,0 +1,14 @@
+.bxslider{
+    display: block;
+    list-style: none;
+    float: left;
+    width: 100%;
+    padding: 0;
+}
+.bxslider img{
+    width: 100%;
+}
+img {
+    vertical-align: middle;
+    width: 100%;
+}

@@ -1,43 +1,47 @@
 import React from 'react';
+import axios from 'axios';
 
 export class Event extends React.Component{
 	constructor(props){
 		super();
-		
-		this.state ={
-            myage: props.age,
-            status: 0, 
-		};
-		setInterval(()=>{
-     	this.setState(
-		{
-			status:this.state.status + 1
-		});
-  
-        }, 3000);   
-		
-	}
-	myfunction(){
-		this.props.linkupdate(this.state.mylink);
+	this.state ={
+		apidata: []
+
+	  } 	
 	}
      
-	increaseAge(){
-		this.setState(
-		{
-			myage: this.state.myage + 3
-		});
-	}
+	get_User(){
+	     var self = this;
+		 axios.get('http://localhost/blog/public/api/user?api_token=$2y$10$fnzuDjk3J/RKAz/6pvEB2.fE1VH7WTjXjCv0CKkdctCXxRhaQVPKe')
+		  .then(function (response) {
+		  	
+		    self.setState({apidata: response.data})
 
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+     
+	}
 
 	render(){
 		
-		return(
+	var alldata = this.state.apidata.map(function(obj,index){
+
+         return(
+			      <li key={index} className="active" >ID:{obj.id} having  email address {obj.email} and having name <a  href="#">{obj.name}</a> </li>
+			 );
+	 });
+	
+
+	return(
 			<div>
-			<button onClick={this.increaseAge.bind(this)}>Click To Increase Age</button>
-			<p>Your Age Is {this.state.myage}</p>
-			<p>Status Is {this.state.status}</p>
-			<button onClick={this.myfunction.bind(this)}>Click To Change Link</button>
+			<button onClick={this.get_User.bind(this)}>Click To Fetch Data</button>
+
+			{alldata}
+               
+			
 			</div>
-			)
+		)
 	}
 }
